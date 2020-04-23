@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Newsletter{
 
     @Id
-    @Column(name = "id_news")
+//    @Column(name = "idNews")
     private int idNews;
     private String email;
 
