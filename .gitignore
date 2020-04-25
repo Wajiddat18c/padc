@@ -98,4 +98,4 @@ fabric.properties
 .idea
 
 .target/classes
-.code/.mvn
+..mvn
