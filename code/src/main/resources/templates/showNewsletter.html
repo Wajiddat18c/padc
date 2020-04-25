@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: testFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr> </tr>
+            <p th:each="newsletter : ${newsletters}">
+            <td> <span th:text="${newsletter.idNews}">Id</span> </td>
+            <td><span th:text="${newsletter.email}">Email</span></td>
+<!--            <td><a th:href="@{'/updateTeachers/' + ${teacher.email}}">Tryk her</a></td>-->
+            <td><a class="text-danger" th:href="@{'/delete/' + ${newsletter.idNews}}">Tryk her</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<!--    <a href="/createTeacher" class="btn btn-info">-->
+<!--        &lt;!&ndash;<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!&ndash;&gt;-->
+<!--        Tilføj lære-->
+<!--    </a>-->
+</div>
+</body>
+</html>
