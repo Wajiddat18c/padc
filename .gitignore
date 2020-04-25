@@ -94,15 +94,3 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-<<<<<<< HEAD
-
-.idea
-
-.target/classes
-<<<<<<< HEAD
-..mvn
-=======
-..mvn
-=======
->>>>>>> parent of 660a167... Refactor
->>>>>>> 34b2df5ec3c873f765a929c6e9619ad296992c3b
