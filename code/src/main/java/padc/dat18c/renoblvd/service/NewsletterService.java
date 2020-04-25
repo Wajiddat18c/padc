@@ -21,13 +21,13 @@ public class NewsletterService {
     public void create(Newsletter newsletter){
         newsletterRepo.save(newsletter);
     }
-    public void delete(String idNews){
+    public void delete(int idNews){
         newsletterRepo.deleteById(idNews);
     }
     public void update(Newsletter newsletter){
         newsletterRepo.save(newsletter);
     }
-    public Newsletter findById(String idNews){
+    public Newsletter findById(int idNews){
         Optional<Newsletter>find = newsletterRepo.findById(idNews);
         if (find.isPresent()){
             return find.get();
