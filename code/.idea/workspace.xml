@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="937ab90d-6175-4c0d-ac0f-baa15cd2560c" name="Default Changelist" comment="" />
+    <list default="true" id="937ab90d-6175-4c0d-ac0f-baa15cd2560c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/padc/dat18c/renoblvd/model/Newsletter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/padc/dat18c/renoblvd/model/Newsletter.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587548703693</updated>
       <workItem from="1587548706528" duration="687000" />
-      <workItem from="1587632753525" duration="3805000" />
+      <workItem from="1587632753525" duration="3583000" />
     </task>
     <servers />
   </component>
