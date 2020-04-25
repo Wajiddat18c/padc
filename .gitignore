@@ -1,5 +1,5 @@
 .idea
-.target/classes
+.target
 # Compiled class file
 *.class
 
