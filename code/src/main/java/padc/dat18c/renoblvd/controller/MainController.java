@@ -67,12 +67,12 @@ public class MainController {
     }
 
 
-    @GetMapping("/createNewsletter")
+    @GetMapping("/news/createNewsletter")
     public String  createTeachers(){
         return "createNewsletter";
     }
 
-    @PostMapping("createNewsletter")
+    @PostMapping("/news/createNewsletter")
     public String createTeachers(@ModelAttribute Newsletter newsletter)
     {
         newsletterService.create(newsletter);
