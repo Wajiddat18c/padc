@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+
+<div class="container">
+    <h1>Tilmeld nyhedsbrev</h1>
+
+    <form class="form-inline"  action="/admin/createCategory" method="post">
+        <!--        <input class="form-control" type="text" name="idNews" placeholder="E-mail">-->
+        <input class="form-control" type="text" name="name" placeholder="Navn">
+        <button type="submit" class="btn btn-default">Tilmeld</button>
+    </form>
+</div>
+
+</body>
+</html>

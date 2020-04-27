@@ -16,23 +16,24 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Email</th>
+                <th>Navn</th>
                 <th>Update</th>
                 <th>Delete</th>
+
             </tr>
             </thead>
             <tbody>
             <tr> </tr>
-            <p th:each="newsletter : ${newsletters}">
-            <td> <span th:text="${newsletter.idNews}">Id</span> </td>
-            <td><span th:text="${newsletter.email}">Email</span></td>
-            <td><a th:href="@{'/admin/updateNewsletter/' + ${newsletter.idNews}}">Tryk her</a></td>
-            <td><a class="text-danger" th:href="@{'/admin/delete/' + ${newsletter.idNews}}">Tryk her</a></td>
+            <p th:each="category : ${category}">
+            <td> <span th:text="${category.idCategories}">Id</span> </td>
+            <td><span th:text="${category.name}">Navn</span></td>
+            <td><a th:href="@{'/admin/updateCategory/' + ${category.idCategories}}">Tryk her</a></td>
+            <td><a class="text-danger" th:href="@{'/admin/deleteCategory/' + ${category.idCategories}}">Tryk her</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <a href="/admin/createNewsletter" class="btn btn-info">
+    <a href="/admin/createCategory" class="btn btn-info">
         <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
         Tilmeld nyhedsbrev
     </a>
