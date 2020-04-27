@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragment/fragment :: head">
 <body>
-<nav th:replace="fragment/fragment :: testFragment"/>
+<nav th:replace="fragment/fragment :: adminFragment"/>
 <div class="container">
     <h1>
         Liste over Nyhedsbreve
@@ -25,13 +25,13 @@
             <p th:each="newsletter : ${newsletters}">
             <td> <span th:text="${newsletter.idNews}">Id</span> </td>
             <td><span th:text="${newsletter.email}">Email</span></td>
-            <td><a th:href="@{'/updateNewsletter/' + ${newsletter.idNews}}">Tryk her</a></td>
-            <td><a class="text-danger" th:href="@{'/delete/' + ${newsletter.idNews}}">Tryk her</a></td>
+            <td><a th:href="@{'/admin/updateNewsletter/' + ${newsletter.idNews}}">Tryk her</a></td>
+            <td><a class="text-danger" th:href="@{'/admin/delete/' + ${newsletter.idNews}}">Tryk her</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <a href="/news/createNewsletter" class="btn btn-info">
+    <a href="/admin/createNewsletter" class="btn btn-info">
         <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
         Tilmeld nyhedsbrev
     </a>

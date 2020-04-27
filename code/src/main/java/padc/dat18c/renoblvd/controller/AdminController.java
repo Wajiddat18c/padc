@@ -1,15 +1,10 @@
 package padc.dat18c.renoblvd.controller;
 
-//import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.security.core.parameters.P;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import padc.dat18c.renoblvd.auth.UserService;
 import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.service.CategoriesService;
@@ -17,7 +12,8 @@ import padc.dat18c.renoblvd.service.NewsletterService;
 
 
 @Controller
-public class MainController {
+@RequestMapping("/admin/")
+public class AdminController {
 
     @Autowired
     NewsletterService newsletterService;
@@ -29,22 +25,9 @@ public class MainController {
     UserService userService;
 
     @GetMapping("/")
-    public String frontPage(){
-        return "index";
-    }
-
-    @GetMapping("/news")
-    public String showNewsletter(Model model){
-        model.addAttribute("newsletters", newsletterService.getAll());
-
-        return "showNewsletter";
-    }
-
-
-    @GetMapping("/admin")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String adminPage(){
-        return "adminIndex";
+        return "admin/adminIndex";
     }
 
     @GetMapping(value = "/login")
@@ -58,37 +41,52 @@ public class MainController {
 
 
 
+    @GetMapping("/news")
+    public String showNewsletter(Model model){
+        model.addAttribute("newsletters", newsletterService.getAll());
+
+        return "admin/news/showNewsletter";
+    }
+
+
+
+
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteNewsletter(@PathVariable("id") int idNews)
     {
         newsletterService.delete(idNews);
-        return "redirect:/news";
+        return "redirect:/admin/news";
     }
 
 
-    @GetMapping("/news/createNewsletter")
+    @GetMapping("/createNewsletter")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String  createTeachers(){
-        return "createNewsletter";
+        return "admin/news/createNewsletter";
     }
 
-    @PostMapping("/news/createNewsletter")
+    @PostMapping("/createNewsletter")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String createTeachers(@ModelAttribute Newsletter newsletter)
     {
         newsletterService.create(newsletter);
-        return "redirect:/news";
+        return "redirect:/admin/news";
     }
 
 
-    @GetMapping("updateNewsletter/{idNews}")
+    @GetMapping("/updateNewsletter/{idNews}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateNewsletter(@PathVariable("idNews") int idNews, Model model){
         model.addAttribute("newsletter", newsletterService.findById(idNews));
-        return "updateNewsletter";
+        return "admin/news/updateNewsletter";
     }
     @PostMapping("/updateNewsletter")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateTeacher(@ModelAttribute Newsletter newsletter){
         newsletterService.update(newsletter);
-        return "redirect:/news";
+        return "redirect:/admin/news";
     }
 
 }
