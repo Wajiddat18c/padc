@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+
+
+<div class="container">
+    <h1>Opret ny produkt</h1>
+    <form class="form-inline"  action="/admin/createProducts" method="post">
+
+        <input class="form-control" type="text" name="name" placeholder="name">
+        <input class="form-control" type="text" name="brand" placeholder="brand">
+        <input class="form-control" type="text" name="pris" placeholder="pris">
+        <input class="form-control" type="text" name="description" placeholder="description">
+
+        <select class="form-control" id="category" name="categories_idCategories">
+    <span th:each="category : ${categoryList}">
+        <option th:value="${category.idCategories}" th:text="${category.name}"></option>
+        </span>
+        </select>
+
+
+        <button type="submit" class="btn btn-success">Tilmeld</button>
+    </form>
+</div>
+
+</body>
+</html>

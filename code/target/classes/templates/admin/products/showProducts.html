@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Navn</th>
+                <th>brand</th>
+                <th>pris</th>
+                <th>description</th>
+                <th>Categori</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr></tr>
+            <p th:each="products : ${products}">
+            <td><span th:text="${products.idProducts}">Id</span></td>
+            <td><span th:text="${products.name}">Navn</span></td>
+            <td><span th:text="${products.brand}">brand</span></td>
+            <td><span th:text="${products.pris}">pris</span></td>
+            <td><span th:text="${products.description}">description</span></td>
+            <td><span th:text="${products.categories_idCategories}">Kategori</span></td>
+            <!--            <td><a th:href="@{'/admin/updateCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
+            <!--            <td><a class="text-danger" th:href="@{'/admin/deleteCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/admin/createProducts" class="btn btn-info">
+        <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
+        Opret Produkt
+    </a>
+</div>
+</body>
+</html>

@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import padc.dat18c.renoblvd.auth.UserService;
 import padc.dat18c.renoblvd.model.Categories;
 import padc.dat18c.renoblvd.model.Newsletter;
+import padc.dat18c.renoblvd.model.Products;
 import padc.dat18c.renoblvd.service.CategoriesService;
 import padc.dat18c.renoblvd.service.NewsletterService;
+import padc.dat18c.renoblvd.service.ProductsService;
 
 
 @Controller
@@ -21,6 +23,9 @@ public class AdminController {
 
     @Autowired
     CategoriesService categoriesService;
+
+    @Autowired
+    ProductsService productsService;
 
     @Autowired
     UserService userService;
@@ -71,6 +76,20 @@ public class AdminController {
         return "redirect:/admin/category";
     }
 
+    @GetMapping("/createProducts")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createProducts(Model model) {
+        model.addAttribute("categoryList", categoriesService.getAll());
+        return "admin/products/createProducts";
+    }
+    @PostMapping("/createProducts")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createProducts(@ModelAttribute Products products) {
+        productsService.create(products);
+        return "redirect:/admin/products";
+    }
+
+
 //    -----------------------------------------------------------------------------------------------------------------------------------
 //    READ
 
@@ -91,6 +110,14 @@ public class AdminController {
         return "admin/category/showCategory";
     }
 
+
+    @GetMapping("/products")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String showProducts(Model model) {
+        model.addAttribute("products", productsService.getAll());
+
+        return "admin/products/showProducts";
+    }
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
 //    UPDATE
