@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>data</th>
+                <th>filename</th>
+                <th>fileType</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr> </tr>
+            <p th:each="img : ${img}">
+            <td> <span th:text="${img.id}">Id</span> </td>
+            <td> <span th:text="${img.data}">mail</span> </td>
+            <td> <span th:text="${img.fileName}">Id</span> </td>
+            <td> <span th:text="${img.fileType}">Id</span> </td>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/admin/uploadFile" class="btn btn-info">
+        <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
+        Upload ny Billed
+    </a>
+</div>
+</body>
+</html>

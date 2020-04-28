@@ -1,17 +1,29 @@
 package padc.dat18c.renoblvd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import padc.dat18c.renoblvd.auth.UserService;
+import padc.dat18c.renoblvd.imageshandler.DatabaseFile;
+import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
+import padc.dat18c.renoblvd.imageshandler.Response;
 import padc.dat18c.renoblvd.model.Categories;
 import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.model.Products;
 import padc.dat18c.renoblvd.service.CategoriesService;
 import padc.dat18c.renoblvd.service.NewsletterService;
 import padc.dat18c.renoblvd.service.ProductsService;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -29,6 +41,9 @@ public class AdminController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    DatabaseFileService databaseFileService;
 
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -89,6 +104,26 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
+    @GetMapping("/uploadFile")
+    public String uploadFiles(Model model) {
+//        model.addAttribute("db", categoriesService.getAll());
+        return "admin/images/uploadFiles";
+    }
+
+    @PostMapping("/uploadFile")
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
+        DatabaseFile fileName = databaseFileService.storeFile(file);
+
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(fileName.getFileName())
+                .toUriString();
+
+//        return new Response(fileName.getFileName(), fileDownloadUri,
+//                file.getContentType(), file.getSize());
+        return "redirect:/admin/images";
+    }
+
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
 //    READ
@@ -117,6 +152,17 @@ public class AdminController {
         model.addAttribute("products", productsService.getAll());
 
         return "admin/products/showProducts";
+    }
+
+
+    @GetMapping("/images")
+    public String  downloadFile(Model model) {
+//    public String  downloadFile(@PathVariable String fileName, HttpServletRequest request, Model model) {
+        // Load file as Resource
+//        DatabaseFile databaseFile = databaseFileService.getFile(fileName);
+        model.addAttribute("img", databaseFileService.getAll());
+
+        return "admin/images/showFiles";
     }
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
