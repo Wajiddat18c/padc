@@ -17,9 +17,11 @@ import padc.dat18c.renoblvd.imageshandler.DatabaseFile;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
 import padc.dat18c.renoblvd.imageshandler.Response;
 import padc.dat18c.renoblvd.model.Categories;
+import padc.dat18c.renoblvd.model.CustomerInformation;
 import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.model.Products;
 import padc.dat18c.renoblvd.service.CategoriesService;
+import padc.dat18c.renoblvd.service.CustomerInformationService;
 import padc.dat18c.renoblvd.service.NewsletterService;
 import padc.dat18c.renoblvd.service.ProductsService;
 
@@ -41,6 +43,9 @@ public class AdminController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    CustomerInformationService customerInformationService;
 
     @Autowired
     DatabaseFileService databaseFileService;
@@ -89,6 +94,19 @@ public class AdminController {
     public String createCategory(@ModelAttribute Categories categories) {
         categoriesService.create(categories);
         return "redirect:/admin/category";
+    }
+
+    @GetMapping("/createCustomer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createCustomer() {
+        return "admin/customerinfo/createCustomer";
+    }
+
+    @PostMapping("/createCustomer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createCustomer(@ModelAttribute CustomerInformation customerInformation) {
+        customerInformationService.create(customerInformation);
+        return "redirect:/admin/customer";
     }
 
     @GetMapping("/createProducts")
@@ -154,6 +172,15 @@ public class AdminController {
         return "admin/products/showProducts";
     }
 
+    @GetMapping("/customer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String getCustomer(Model model){
+        model.addAttribute("customer", customerInformationService.getAll());
+
+        return "admin/customerinfo/showCustomer";
+    }
+
+
 
     @GetMapping("/images")
     public String  downloadFile(Model model) {
@@ -196,6 +223,20 @@ public class AdminController {
         return "redirect:/admin/category";
     }
 
+    @GetMapping("/updateCustomer/{idcustomerInformation}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateCustomer(@PathVariable("idcustomerInformation") int idcustomerInformation, Model model) {
+        model.addAttribute("customer", customerInformationService.findById(idcustomerInformation));
+        return "admin/customerinfo/updateCustomer";
+    }
+
+    @PostMapping("/updateCustomer")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateCategory(@ModelAttribute CustomerInformation customerInformation) {
+        customerInformationService.update(customerInformation);
+        return "redirect:/admin/customer";
+    }
+
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
 //    DELETE
@@ -214,5 +255,11 @@ public class AdminController {
         return "redirect:/admin/category";
     }
 
+    @GetMapping("/deleteCustomer/{idcustomerInformation}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteCustomer(@PathVariable("idcustomerInformation") int idcustomerInformation) {
+        customerInformationService.delete(idcustomerInformation);
+        return "redirect:/admin/customer";
+    }
 
 }

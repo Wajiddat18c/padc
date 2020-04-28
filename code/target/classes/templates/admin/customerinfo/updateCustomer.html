@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+
+
+<form class="form-inline"  action="/admin/updateCustomer" method="post">
+    <input class="form-control" type="hidden" name="idcustomerInformation" th:value="${customer.idcustomerInformation}">
+    <input class="form-control" type="text" placeholder="firstName" name="firstName" th:value="${customer.firstName}">
+    <input class="form-control" type="text" placeholder="lastName" name="lastName" th:value="${customer.lastName}">
+    <input class="form-control" type="text" placeholder="phoneNumber" name="phoneNumber" th:value="${customer.phoneNumber}">
+    <input class="form-control" type="text" placeholder="Email" name="email" th:value="${customer.email}">
+
+    <button type="submit" class="btn btn-success">Opdater</button>
+</form>
+
+
+</body>
+</html>
