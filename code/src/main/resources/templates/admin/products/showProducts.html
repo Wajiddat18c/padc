@@ -32,7 +32,9 @@
             <td><span th:text="${products.brand}">brand</span></td>
             <td><span th:text="${products.pris}">pris</span></td>
             <td><span th:text="${products.description}">description</span></td>
-            <td><span th:text="${products.categories_idCategories}">Kategori</span></td>
+            <td><span th:each="category : ${category}" th:if="${products.categories_idCategories == category.idCategories}" th:text="${category.name}">kategori</span></td>
+
+
             <!--            <td><a th:href="@{'/admin/updateCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
             <!--            <td><a class="text-danger" th:href="@{'/admin/deleteCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
             </tr>

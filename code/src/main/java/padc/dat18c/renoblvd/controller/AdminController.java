@@ -167,6 +167,7 @@ public class AdminController {
     @GetMapping("/products")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String showProducts(Model model) {
+        model.addAttribute("category", categoriesService.getAll());
         model.addAttribute("products", productsService.getAll());
 
         return "admin/products/showProducts";
