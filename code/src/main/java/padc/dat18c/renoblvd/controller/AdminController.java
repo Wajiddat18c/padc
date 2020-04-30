@@ -238,6 +238,21 @@ public class AdminController {
         return "redirect:/admin/customer";
     }
 
+    @GetMapping("/updateProducts/{idProducts}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateProducts(@PathVariable("idProducts") int idProducts, Model model) {
+        model.addAttribute("products", productsService.findById(idProducts));
+        model.addAttribute("categoryList", categoriesService.getAll());
+        return "admin/products/updateProducts";
+    }
+
+    @PostMapping("/updateProducts")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateProducts(@ModelAttribute Products products) {
+        productsService.update(products);
+        return "redirect:/admin/products";
+    }
+
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
 //    DELETE
@@ -263,4 +278,10 @@ public class AdminController {
         return "redirect:/admin/customer";
     }
 
+    @GetMapping("/deleteProducts/{idProducts}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteProducts(@PathVariable("idProducts") int idProducts) {
+        productsService.delete(idProducts);
+        return "redirect:/admin/products";
+    }
 }
