@@ -277,4 +277,10 @@ public class AdminController {
         return "redirect:/admin/customer";
     }
 
+    @GetMapping("/deleteProducts/{idProducts}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteProducts(@PathVariable("idProducts") int idProducts) {
+        productsService.delete(idProducts);
+        return "redirect:/admin/products";
+    }
 }
