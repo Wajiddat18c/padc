@@ -5,16 +5,24 @@
     <title>DDN</title>
 </head>
 <body>
-<h1>
-    RENO
-</h1>
+<nav th:replace="fragment/fragment :: navbar">
+</nav>
+<div class="container">
+    <div class="content">
+        <h1>
+            RENO
+        </h1>
+        <p>
+            Gå til
+            <a href="/admin/"> admin</a>
+            Sign up here: <a href="shop/signup"> nyhedsbrev </a>
+        </p>
 
-<p>
-    Gå til
-    <a href="/admin/"> admin</a>
-    Sign up here: <a href="shop/signup"> nyhedsbrev </a>
-</p>
+    </div>
+    <nav>
 
-<nav th:replace="fragment/fragment :: testFragment"/>
+    </nav>
+</div>
+
 </body>
 </html>
