@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Antal</th>
+                <th>Navn</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr> </tr>
+            <p th:each="basket : ${basket}">
+            <td> <span th:text="${basket.idbasketProducts}">Id</span> </td>
+            <td><span th:text="${basket.amount}">Navn</span></td>
+            <td><span th:text="${basket.products_idProducts}">Navn</span></td>
+            <td><span th:each="product : ${product}" th:if="${basket.products_idProducts == product.idProducts}" th:text="${product.name}">Kategori</span></td>
+            <!--            <td><a th:href="@{'/admin/updateCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
+<!--            <td><a class="text-danger" th:href="@{'/admin/deleteCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/admin/createCategory" class="btn btn-info">
+        <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
+        Opret ny kategori
+    </a>
+</div>
+</body>
+</html>

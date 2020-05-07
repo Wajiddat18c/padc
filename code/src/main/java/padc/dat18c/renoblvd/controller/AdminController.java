@@ -20,10 +20,7 @@ import padc.dat18c.renoblvd.model.Categories;
 import padc.dat18c.renoblvd.model.CustomerInformation;
 import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.model.Products;
-import padc.dat18c.renoblvd.service.CategoriesService;
-import padc.dat18c.renoblvd.service.CustomerInformationService;
-import padc.dat18c.renoblvd.service.NewsletterService;
-import padc.dat18c.renoblvd.service.ProductsService;
+import padc.dat18c.renoblvd.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -49,6 +46,9 @@ public class AdminController {
 
     @Autowired
     DatabaseFileService databaseFileService;
+
+    @Autowired
+    BasketProductsService basketProductsService;
 
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -179,6 +179,14 @@ public class AdminController {
         model.addAttribute("customer", customerInformationService.getAll());
 
         return "admin/customerinfo/showCustomer";
+    }
+
+    @GetMapping("/basket")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String getBasket(Model model){
+        model.addAttribute("basket", basketProductsService.getAll());
+        model.addAttribute("product", productsService.getAll());
+        return "admin/basket/showBaskets";
     }
 
 
