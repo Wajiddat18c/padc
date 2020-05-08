@@ -16,6 +16,7 @@ import padc.dat18c.renoblvd.auth.UserService;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFile;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
 import padc.dat18c.renoblvd.imageshandler.DatabaseSERVICE;
+import padc.dat18c.renoblvd.imageshandler.FileInfoService;
 import padc.dat18c.renoblvd.imageshandler.Response;
 import padc.dat18c.renoblvd.model.Categories;
 import padc.dat18c.renoblvd.model.CustomerInformation;
@@ -53,6 +54,7 @@ public class AdminController {
 
     @Autowired
     DatabaseSERVICE databaseSERVICE;
+    FileInfoService fileInfoService;
 
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -206,6 +208,15 @@ public class AdminController {
         model.addAttribute("img", databaseFileService.getAll());
 
         return "admin/images/showFiles";
+    }
+    @GetMapping("/images2")
+    public String  downloadFileInfo(Model model) {
+//    public String  downloadFile(@PathVariable String fileName, HttpServletRequest request, Model model) {
+        // Load file as Resource
+//        DatabaseFile databaseFile = databaseFileService.getFile(fileName);
+        model.addAttribute("img", fileInfoService.getAll());
+
+        return "admin/images/showFileInfo";
     }
 
 //    -----------------------------------------------------------------------------------------------------------------------------------
