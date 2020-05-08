@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+
+
+<form class="form-inline"  action="/admin/updateFiles" method="post">
+
+    <input class="form-control" type="hidden" name="id" th:value="${img.id}">
+    <input class="form-control" type="hidden" name="data" th:value="${img.data}">
+    <input class="form-control" type="hidden" name="fileName" th:value="${img.fileName}">
+    <input class="form-control" type="hidden" name="fileType" th:value="${img.fileType}">
+
+<!--    <img height="50" width="50" th:src="@{'/downloadFile/' + ${img.id}}">-->
+
+<!--    <input class="form-control" type="text" name="products_id_Products" placeholder="products_id_Products">-->
+
+
+        <select class="form-control" id="products" name="products_id_Products">
+    <span th:each="products : ${productsList}">
+        <option th:value="${products.idProducts}" th:text="${products.name}"></option>
+        </span>
+    </select>
+    <button type="submit" class="btn btn-success">Opdater</button>
+</form>
+
+
+</body>
+</html>

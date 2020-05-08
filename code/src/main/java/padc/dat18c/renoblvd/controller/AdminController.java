@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import padc.dat18c.renoblvd.auth.UserService;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFile;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
+import padc.dat18c.renoblvd.imageshandler.DatabaseSERVICE;
 import padc.dat18c.renoblvd.imageshandler.Response;
 import padc.dat18c.renoblvd.model.Categories;
 import padc.dat18c.renoblvd.model.CustomerInformation;
@@ -49,6 +50,9 @@ public class AdminController {
 
     @Autowired
     BasketProductsService basketProductsService;
+
+    @Autowired
+    DatabaseSERVICE databaseSERVICE;
 
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -125,11 +129,14 @@ public class AdminController {
     @GetMapping("/uploadFile")
     public String uploadFiles(Model model) {
 //        model.addAttribute("db", categoriesService.getAll());
+        model.addAttribute("productsList", productsService.getAll());
+
         return "admin/images/uploadFiles";
     }
 
     @PostMapping("/uploadFile")
     public String uploadFile(@RequestParam("file") MultipartFile file) {
+
         DatabaseFile fileName = databaseFileService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -259,6 +266,22 @@ public class AdminController {
     public String updateProducts(@ModelAttribute Products products) {
         productsService.update(products);
         return "redirect:/admin/products";
+    }
+
+    @GetMapping("/updateFiles/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateFiles(@PathVariable("id") String id, Model model) {
+        model.addAttribute("productsList", productsService.getAll());
+        model.addAttribute("img", databaseSERVICE.findbyId(id));
+
+        return "admin/images/updateFiles";
+    }
+
+    @PostMapping("/updateFiles")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateFiles(@ModelAttribute DatabaseFile databaseFile) {
+        databaseSERVICE.update(databaseFile);
+        return "redirect:/admin/images";
     }
 
 

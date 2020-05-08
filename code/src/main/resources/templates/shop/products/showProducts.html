@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: testFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Navn</th>
+                <th>brand</th>
+                <th>pris</th>
+                <th>description</th>
+                <th>Categori</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr></tr>
+            <p th:each="products : ${products}">
+            <td><span th:text="${products.idProducts}">Id</span></td>
+            <td><span th:text="${products.name}">Navn</span></td>
+            <td><span th:text="${products.brand}">Brand</span></td>
+            <td><span th:text="${products.pris}">Pris</span></td>
+            <td><span th:text="${products.description}">Fescription</span></td>
+            <td><span th:each="category : ${category}" th:if="${products.categories_idCategories == category.idCategories}" th:text="${category.name}">Kategori</span></td>
+            </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>

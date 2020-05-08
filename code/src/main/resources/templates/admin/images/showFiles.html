@@ -19,6 +19,7 @@
                 <th>data</th>
                 <th>filename</th>
                 <th>fileType</th>
+                <th>Product</th>
                 <th>img</th>
 
             </tr>
@@ -30,7 +31,11 @@
             <td> <span th:text="${img.data}">data</span> </td>
             <td> <span th:text="${img.fileName}">name</span> </td>
             <td> <span th:text="${img.fileType}">type</span> </td>
+            <td> <span th:text="${img.products_id_Products}">type</span> </td>
             <td><img height="50" width="50" th:src="@{'/downloadFile/' + ${img.id}}"> </td>
+
+            <td><a th:href="@{'/admin/updateFiles/' + ${img.id}}">Tryk her</a></td>
+
 
             </tr>
             </tbody>

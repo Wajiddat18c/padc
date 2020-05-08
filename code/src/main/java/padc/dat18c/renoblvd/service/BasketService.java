@@ -27,7 +27,7 @@ public class BasketService {
     }
 
     public void update(Basket basket){
-        basketRepo.save(basket)
+        basketRepo.save(basket);
     }
 
     public Basket findById(int idBasket){
