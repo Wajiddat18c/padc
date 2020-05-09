@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+<div class="container">
+    <h1>
+        Liste over Nyhedsbreve
+    </h1>
+
+
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>img</th>
+                <th>product name</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr> </tr>
+            <p th:each="imgproduct : ${imgproduct}">
+
+
+            <td> <span th:text="${imgproduct.idProductsToImages}">data</span> </td>
+
+            <td><img height="50" width="50" th:each="img : ${img}" th:if="${imgproduct.files_id == img.id}" th:src="@{'/downloadFile/' + ${img.id}}"> </td>
+
+            <td><span th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}" th:text="${product.name}">Kategori</span></td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/admin/mapimgwithproduct" class="btn btn-info">
+        <!--<span class="glyphicon glyphicon-cutlery"></span> Add Teacher!-->
+        Upload ny Billed
+    </a>
+</div>
+</body>
+</html>

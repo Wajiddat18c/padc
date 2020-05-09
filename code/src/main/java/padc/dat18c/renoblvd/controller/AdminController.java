@@ -18,10 +18,7 @@ import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
 import padc.dat18c.renoblvd.imageshandler.DatabaseSERVICE;
 import padc.dat18c.renoblvd.imageshandler.FileInfoService;
 import padc.dat18c.renoblvd.imageshandler.Response;
-import padc.dat18c.renoblvd.model.Categories;
-import padc.dat18c.renoblvd.model.CustomerInformation;
-import padc.dat18c.renoblvd.model.Newsletter;
-import padc.dat18c.renoblvd.model.Products;
+import padc.dat18c.renoblvd.model.*;
 import padc.dat18c.renoblvd.service.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +48,9 @@ public class AdminController {
 
     @Autowired
     BasketProductsService basketProductsService;
+
+    @Autowired
+    ProductstoimagesService productstoimagesService;
 
     @Autowired
     DatabaseSERVICE databaseSERVICE;
@@ -128,6 +128,20 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
+    @GetMapping("/mapimgwithproduct")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createImgProd(Model model) {
+        model.addAttribute("productList", productsService.getAll());
+        model.addAttribute("imgList", databaseFileService.getAll());
+        return "admin/images/addImgToProduct";
+    }
+    @PostMapping("/mapimgwithproduct")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String createImgProd(@ModelAttribute Productstoimages productstoimages) {
+        productstoimagesService.create(productstoimages);
+        return "redirect:/admin/images/products";
+    }
+
     @GetMapping("/uploadFile")
     public String uploadFiles(Model model) {
 //        model.addAttribute("db", categoriesService.getAll());
@@ -197,6 +211,16 @@ public class AdminController {
         model.addAttribute("product", productsService.getAll());
         return "admin/basket/showBaskets";
     }
+
+    @GetMapping("/images/products")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String getImg(Model model){
+        model.addAttribute("img", databaseFileService.getAll());
+        model.addAttribute("product", productsService.getAll());
+        model.addAttribute("imgproduct", productstoimagesService.getAll());
+        return "admin/images/showImgWithProducts";
+    }
+
 
 
 

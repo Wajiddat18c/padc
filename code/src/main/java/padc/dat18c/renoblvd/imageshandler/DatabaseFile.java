@@ -19,7 +19,6 @@ public class DatabaseFile {
     @Lob
     private byte[] data;
 
-    private String products_id_Products;
 
     public DatabaseFile(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;
@@ -27,12 +26,6 @@ public class DatabaseFile {
         this.data = data;
     }
 
-    public DatabaseFile(String fileName, String fileType, byte[] data, String products_id_Products) {
-        this.fileName = fileName;
-        this.fileType = fileType;
-        this.data = data;
-        this.products_id_Products = products_id_Products;
-    }
 
     public DatabaseFile() {
 
@@ -70,11 +63,5 @@ public class DatabaseFile {
         this.data = data;
     }
 
-    public String getProducts_id_Products() {
-        return products_id_Products;
-    }
 
-    public void setProducts_id_Products(String products_id_Products) {
-        this.products_id_Products = products_id_Products;
-    }
 }

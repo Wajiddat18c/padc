@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<nav th:replace="fragment/fragment :: adminFragment"/>
+
+
+<div class="container">
+    <h1>Opret ny produkt</h1>
+    <form class="form-inline"  action="/admin/mapimgwithproduct" method="post">
+
+        <select class="form-control" id="img" name="files_id">
+    <span th:each="img : ${imgList}">
+        <option th:value="${img.id}" th:text="${img.fileName}"></option>
+        </span>
+        </select>
+
+        <select class="form-control" id="product" name="products_id_Products">
+    <span th:each="product : ${productList}">
+        <option th:value="${product.idProducts}" th:text="${product.name}"></option>
+        </span>
+        </select>
+
+
+        <button type="submit" class="btn btn-success">Tilmeld</button>
+    </form>
+</div>
+
+</body>
+</html>
