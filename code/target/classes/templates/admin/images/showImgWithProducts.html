@@ -18,6 +18,8 @@
                 <th>Id</th>
                 <th>img</th>
                 <th>product name</th>
+                <th>Update</th>
+                <th>Delete</th>
 
 
             </tr>
@@ -34,6 +36,9 @@
             <td><span th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}" th:text="${product.name}">Kategori</span></td>
 
 
+            <td><a th:href="@{'/admin/updateimg/' + ${imgproduct.idProductsToImages}}">Tryk her</a></td>
+
+            <td><a class="text-danger" th:href="@{'/admin/deleteimgprod/' + ${imgproduct.idProductsToImages}}">Tryk her</a></td>
 
             </tr>
             </tbody>

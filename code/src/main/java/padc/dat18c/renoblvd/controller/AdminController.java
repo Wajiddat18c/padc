@@ -303,6 +303,22 @@ public class AdminController {
         return "redirect:/admin/products";
     }
 
+    @GetMapping("/updateimg/{idProductsToImages}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateImages(@PathVariable("idProductsToImages") int idProductsToImages, Model model) {
+        model.addAttribute("imgprod", productstoimagesService.findById(idProductsToImages));
+        model.addAttribute("img", databaseFileService.getAll());
+        model.addAttribute("productList", productsService.getAll());
+        return "admin/images/updateImg";
+    }
+
+    @PostMapping("/updateimg")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateImages(@ModelAttribute Productstoimages productstoimages) {
+        productstoimagesService.update(productstoimages);
+        return "redirect:/admin/images/products";
+    }
+
     @GetMapping("/updateFiles/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateFiles(@PathVariable("id") String id, Model model) {
@@ -349,5 +365,12 @@ public class AdminController {
     public String deleteProducts(@PathVariable("idProducts") int idProducts) {
         productsService.delete(idProducts);
         return "redirect:/admin/products";
+    }
+
+    @GetMapping("/deleteimgprod/{idProductsToImages}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteImgProd(@PathVariable("idProductsToImages") int idProductsToImages) {
+        productstoimagesService.delete(idProductsToImages);
+        return "redirect:/admin/images/products";
     }
 }
