@@ -31,7 +31,7 @@
 
             <td> <span th:text="${imgproduct.idProductsToImages}">data</span> </td>
 
-            <td><img height="50" width="50" th:each="img : ${img}" th:if="${imgproduct.files_id == img.id}" th:src="@{'/downloadFile/' + ${img.id}}"> </td>
+            <td><img height="50" width="50" th:src="@{'/downloadFile/' + ${imgproduct.files_id}}"> </td>
 
             <td><span th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}" th:text="${product.name}">Kategori</span></td>
 

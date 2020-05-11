@@ -16,7 +16,7 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>data</th>
+
                 <th>filename</th>
                 <th>fileType</th>
                 <th>img</th>
@@ -27,7 +27,7 @@
             <tr> </tr>
             <p th:each="img : ${img}">
             <td> <a target="_blank" th:href="@{'/downloadFile/' + ${img.id}}"><span th:text="${img.id}">id</span> </a></td>
-            <td> <span th:text="${img.data}">data</span> </td>
+
             <td> <span th:text="${img.fileName}">name</span> </td>
             <td> <span th:text="${img.fileType}">type</span> </td>
             <td><img height="50" width="50" th:src="@{'/downloadFile/' + ${img.id}}"> </td>

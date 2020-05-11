@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
-import padc.dat18c.renoblvd.imageshandler.FileInfo;
 import padc.dat18c.renoblvd.imageshandler.FileInfoService;
-import padc.dat18c.renoblvd.model.Products;
 import padc.dat18c.renoblvd.model.Productstoimages;
 import padc.dat18c.renoblvd.service.ProductsService;
 import padc.dat18c.renoblvd.service.ProductstoimagesService;
@@ -30,7 +29,6 @@ public class IndexController {
     @GetMapping("/")
     public String frontPage(Model model){
 
-        model.addAttribute("img", fileInfoService.getAll());
         model.addAttribute("product", productsService.getAll());
         List<Productstoimages> productstoimagesList = productstoimagesService.getAll();
         List<Productstoimages> result = new ArrayList<>();
@@ -64,6 +62,14 @@ public class IndexController {
     @GetMapping(value = "/logout-success")
     public String getLogoutPage(){
         return "logout";
+    }
+
+    @GetMapping("/product/{id}")
+    public String viewProduct(@PathVariable("id")int id, Model model){
+
+        model.addAttribute("productImgs", productstoimagesService.getByProdId(id));
+        model.addAttribute(("product"), productsService.findById(id));
+        return "shop/products/showProduct";
     }
 
 }

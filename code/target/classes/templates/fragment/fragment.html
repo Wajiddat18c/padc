@@ -22,7 +22,7 @@
         HELLO DETTE ER EN FRAGMENT!
     </p>
 </div>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav th:fragment="navbar" style="margin-bottom: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="/">Reno Blvd.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -42,9 +42,7 @@
 <div class="row" th:fragment="productsFragment">
     <div th:each="imgproduct : ${imgproduct}" class="col-md-4">
         <div class="card mb-4 box-shadow">
-            <span th:each="img : ${img}">
-                <img th:if="${imgproduct.files_id == img.id}" th:src="@{'/downloadFile/' + ${img.id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
-            </span>
+            <img th:src="@{'/downloadFile/' + ${imgproduct.files_id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
             <div class="card-body" th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}">
                 <p class="card-text" th:text="${product.name}">
                     This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.

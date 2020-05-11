@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import padc.dat18c.renoblvd.Repository.ProductstoimagesRepo;
 import padc.dat18c.renoblvd.model.Productstoimages;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,15 @@ public class ProductstoimagesService {
     }
     public List<Productstoimages>getAll(){
         return (List<Productstoimages>) productstoimagesRepo.findAll();
+    }
+    public List<Productstoimages>getByProdId(int id){
+        List<Productstoimages> result = new ArrayList<>();
+        List<Productstoimages> all = (List<Productstoimages>) productstoimagesRepo.findAll();
+        for(Productstoimages productstoimages : all){
+            if(productstoimages.getProducts_id_Products() == id)
+                result.add(productstoimages);
+        }
+        return result;
     }
 
 }

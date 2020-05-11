@@ -9,25 +9,28 @@
 </nav>
 <div class="container">
     <div class="content">
-        <div class="row">
-        <h1>
-            RENO
-        </h1>
-        <p>
-            Gå til
-            <a href="/admin/"> admin</a>
-        </p>
+        <div>
+            <h1>
+                Reno Blvd. webshop
+            </h1>
             <p>
-            Sign up here: <a href="shop/signup"> nyhedsbrev </a>
-        </p>
+                Gå til
+                <a href="/admin/"> admin</a>
+            </p>
+            <p>
+                Velkommen til Reno Blvd.'s webshop, her kan du købe de produkter der bruges hos os.
+            </p>
+            <p class="font-weight-bold">
+                Sign up here: <a href="shop/signup"> nyhedsbrev </a>
+            </p>
         </div>
-        <div class="row" th:replace="fragment/fragment :: productsFragment">
+        <div th:replace="fragment/fragment :: productsFragment">
         </div>
     </div>
 </div>
-    <nav>
+<nav>
 
-    </nav>
+</nav>
 
 </body>
 </html>

@@ -54,6 +54,8 @@ public class AdminController {
 
     @Autowired
     DatabaseSERVICE databaseSERVICE;
+
+    @Autowired
     FileInfoService fileInfoService;
 
     @GetMapping("/")
@@ -215,7 +217,6 @@ public class AdminController {
     @GetMapping("/images/products")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getImg(Model model){
-        model.addAttribute("img", databaseFileService.getAll());
         model.addAttribute("product", productsService.getAll());
         model.addAttribute("imgproduct", productstoimagesService.getAll());
         return "admin/images/showImgWithProducts";
@@ -229,7 +230,7 @@ public class AdminController {
 //    public String  downloadFile(@PathVariable String fileName, HttpServletRequest request, Model model) {
         // Load file as Resource
 //        DatabaseFile databaseFile = databaseFileService.getFile(fileName);
-        model.addAttribute("img", databaseFileService.getAll());
+        model.addAttribute("img", fileInfoService.getAll());
 
         return "admin/images/showFiles";
     }
