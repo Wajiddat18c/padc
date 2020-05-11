@@ -39,6 +39,31 @@
         </div>
     </div>
 </nav>
+<div class="row" th:fragment="productsFragment">
+    <div th:each="imgproduct : ${imgproduct}" class="col-md-4">
+        <div class="card mb-4 box-shadow">
+            <span th:each="img : ${img}">
+                <img th:if="${imgproduct.files_id == img.id}" th:src="@{'/downloadFile/' + ${img.id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+            </span>
+            <div class="card-body" th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}">
+                <p class="card-text" th:text="${product.name}">
+                    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </p>
+                <p th:text="${product.description}">
+
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a th:href="@{'/product/' + ${product.idProducts}}">
+                        <button type="button" class="btn btn-success">
+                            Køb
+                        </button>
+                    </a>
+                    <small th:text="${product.pris} + 'kr,-'" class="text-muted">90kr ,-</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div th:fragment="adminFragment">
     <p>
         This is a admin fragment!
