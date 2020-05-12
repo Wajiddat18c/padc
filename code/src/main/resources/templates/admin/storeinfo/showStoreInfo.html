@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+<body>
+<nav th:replace="fragment/adminfragment :: navbar"/>
+<div class="container">
+    <h1>
+        virksomhedsinfo
+    </h1>
+
+
+
+
+    <div>
+        <table class="table table-condensed table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>navn</th>
+                <th>addresse</th>
+                <th>åbningstid</th>
+                <th>email</th>
+                <th>beskrivelse</th>
+                <th>mobil nummer</th>
+                <th>vat</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr> </tr>
+            <p th:each="store : ${store}">
+            <td> <span th:text="${store.idStore}">Id</span> </td>
+            <td><span th:text="${store.name}">name</span></td>
+            <td><span th:text="${store.address}">address</span></td>
+            <td><span th:text="${store.opening_hours}">opening_hours</span></td>
+            <td><span th:text="${store.email}">email</span></td>
+            <td><span th:text="${store.description}">description</span></td>
+            <td><span th:text="${store.phone_number}">phone_number</span></td>
+            <td><span th:text="${store.vat}">vat</span></td>
+            <td><a th:href="@{'/admin/updateStoreInfo/' + ${store.idStore}}">Tryk her</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>

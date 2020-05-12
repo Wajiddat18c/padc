@@ -58,6 +58,9 @@ public class AdminController {
     @Autowired
     FileInfoService fileInfoService;
 
+    @Autowired
+    StoreService storeService;
+
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String adminPage() {
@@ -198,6 +201,14 @@ public class AdminController {
         return "admin/products/showProducts";
     }
 
+    @GetMapping("/storeinfo")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String showStore(Model model){
+        model.addAttribute("store", storeService.getAll());
+
+        return "admin/storeInfo/showStoreInfo";
+    }
+
     @GetMapping("/customer")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getCustomer(Model model){
@@ -265,6 +276,22 @@ public class AdminController {
         categoriesService.update(categories);
         return "redirect:/admin/category";
     }
+
+
+    @GetMapping("/updateStoreInfo/{idStore}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateStore(@PathVariable("idStore") int idStore, Model model) {
+        model.addAttribute("store", storeService.findById(idStore));
+        return "admin/storeinfo/updateStoreInfo";
+    }
+
+    @PostMapping("/updateStoreInfo")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String updateStore(@ModelAttribute Store store) {
+        storeService.update(store);
+        return "redirect:/admin/storeinfo";
+    }
+
 
     @GetMapping("/updateCustomer/{idcustomerInformation}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")

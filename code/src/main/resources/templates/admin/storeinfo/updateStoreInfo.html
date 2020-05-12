@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/fragment :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragment/adminfragment :: navbar"/>
+
+<div class="container">
+    <form class="form-inline"  action="/admin/updateStoreInfo" method="post">
+        <input class="form-control" type="hidden" name="idStore" th:value="${store.idStore}">
+        <input class="form-control" type="text" placeholder="name" name="name" th:value="${store.name}">
+        <input class="form-control" type="text" placeholder="address" name="address" th:value="${store.address}">
+        <input class="form-control" type="text" placeholder="opening_hours" name="opening_hours" th:value="${store.opening_hours}">
+        <input class="form-control" type="text" placeholder="email" name="email" th:value="${store.email}">
+        <input class="form-control" type="text" placeholder="description" name="description" th:value="${store.description}">
+        <input class="form-control" type="text" placeholder="phone_number" name="phone_number" th:value="${store.phone_number}">
+        <input class="form-control" type="text" placeholder="vat" name="vat" th:value="${store.vat}">
+
+        <button type="submit" class="btn btn-success">Opdater</button>
+    </form>
+</div>
+
+</body>
+</html>
