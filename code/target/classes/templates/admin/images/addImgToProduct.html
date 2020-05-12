@@ -5,11 +5,11 @@
     <title>Create</title>
 </head>
 <body>
-<nav th:replace="fragment/fragment :: adminFragment"/>
+<nav th:replace="fragment/adminfragment :: navbar"/>
 
 
 <div class="container">
-    <h1>Opret ny produkt</h1>
+    <h1>Opret ny produkt billede</h1>
     <form class="form-inline"  action="/admin/mapimgwithproduct" method="post">
 
         <select class="form-control" id="img" name="files_id">
@@ -25,7 +25,7 @@
         </select>
 
 
-        <button type="submit" class="btn btn-success">Tilmeld</button>
+        <button type="submit" class="btn btn-success">Opret</button>
     </form>
 </div>
 

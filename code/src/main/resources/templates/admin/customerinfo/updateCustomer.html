@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="fragment/fragment :: adminFragment"/>
+<nav th:replace="fragment/adminfragment :: navbar"/>
 
-
+<div class="container">
 <form class="form-inline"  action="/admin/updateCustomer" method="post">
     <input class="form-control" type="hidden" name="idcustomerInformation" th:value="${customer.idcustomerInformation}">
     <input class="form-control" type="text" placeholder="firstName" name="firstName" th:value="${customer.firstName}">
@@ -17,7 +17,7 @@
 
     <button type="submit" class="btn btn-success">Opdater</button>
 </form>
-
+</div>
 
 </body>
 </html>

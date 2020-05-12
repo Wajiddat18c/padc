@@ -5,16 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<nav th:replace="fragment/fragment :: adminFragment"/>
+<nav th:replace="fragment/adminfragment :: navbar"/>
 
-
+<div class="container">
 <form class="form-inline"  action="/admin/updateNewsletter" method="post">
     <input class="form-control" type="hidden" name="idNews" th:value="${newsletter.idNews}">
     <input class="form-control" type="text" placeholder="Email" name="email" th:value="${newsletter.email}">
 
     <button type="submit" class="btn btn-success">Opdater</button>
 </form>
-
+</div>
 
 </body>
 </html>

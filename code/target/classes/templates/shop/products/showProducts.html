@@ -2,6 +2,31 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragment/fragment :: head">
 <body>
+<nav th:replace="fragment/fragment :: navbar">
+</nav>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <form class="col-md-3" action="/shop/products/" method="get">
+                <label for="category" class="font-weight-bold">Kategori</label>
+                <button class="btn btn-success float-right" type="submit">Filtrer</button>
+                <select class="form-control" name="category" id="category">
+                    <option th:each="category : ${category}" th:value="${category.idCategories}" th:text="${category.name}"></option>
+                </select>
+            </form>
+            <form class="col-md-3 offset-md-6" action="/shop/products/" method="get">
+
+                <label for="query" class="font-weight-bold" style="margin:8px;">Søg på produkt</label>
+                <button class="btn btn-success float-right" type="submit"> Søg</button>
+
+                <input name="query" id="query" class="form-control" placeholder="Produktnavn">
+            </form>
+        </div>
+        <div th:replace="fragment/fragment :: productsFragment">
+        </div>
+    </div>
+</div>
+<!--
 <nav th:replace="fragment/fragment :: testFragment"/>
 <div class="container">
     <h1>
@@ -10,6 +35,7 @@
 
 
     <div>
+
         <table class="table table-condensed table-bordered table-hover">
             <thead>
             <tr>
@@ -34,6 +60,6 @@
             </tr>
             </tbody>
         </table>
-
+-->
 </body>
 </html>

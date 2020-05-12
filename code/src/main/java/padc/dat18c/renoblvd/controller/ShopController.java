@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import padc.dat18c.renoblvd.auth.UserService;
 import padc.dat18c.renoblvd.model.Newsletter;
+import padc.dat18c.renoblvd.model.Productstoimages;
 import padc.dat18c.renoblvd.service.CategoriesService;
 import padc.dat18c.renoblvd.service.NewsletterService;
 import padc.dat18c.renoblvd.service.ProductsService;
+import padc.dat18c.renoblvd.service.ProductstoimagesService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -28,6 +33,9 @@ public class ShopController {
 
     @Autowired
     ProductsService productsService;
+
+    @Autowired
+    ProductstoimagesService productstoimagesService;
 
     @Autowired
     UserService userService;
@@ -57,8 +65,24 @@ public class ShopController {
 
     @GetMapping("/products")
     public String showProducts(Model model) {
+        model.addAttribute("product", productsService.getAll());
+        List<Productstoimages> productstoimagesList = productstoimagesService.getAll();
+        List<Productstoimages> result = new ArrayList<>();
+
+        for(Productstoimages productstoimages : productstoimagesList){
+            boolean contains = false;
+            for(Productstoimages productstoimages1 : result){
+                if(productstoimages1.getProducts_id_Products() == productstoimages.getProducts_id_Products()) {
+                    contains = true;
+                    break;
+                }
+            }
+            if(!contains)
+                result.add(productstoimages);
+        }
+
+        model.addAttribute("imgproduct", result);
         model.addAttribute("category", categoriesService.getAll());
-        model.addAttribute("products", productsService.getAll());
 
         return "shop/products/showProducts";
     }

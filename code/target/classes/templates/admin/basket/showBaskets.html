@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragment/fragment :: head">
 <body>
-<nav th:replace="fragment/fragment :: adminFragment"/>
+<nav th:replace="fragment/adminfragment :: navbar"/>
 <div class="container">
     <h1>
-        Liste over Nyhedsbreve
+        Liste over kurve
     </h1>
 
 
@@ -28,7 +28,6 @@
             <p th:each="basket : ${basket}">
             <td> <span th:text="${basket.idbasketProducts}">Id</span> </td>
             <td><span th:text="${basket.amount}">Navn</span></td>
-            <td><span th:text="${basket.products_idProducts}">Navn</span></td>
             <td><span th:each="product : ${product}" th:if="${basket.products_idProducts == product.idProducts}" th:text="${product.name}">Kategori</span></td>
             <!--            <td><a th:href="@{'/admin/updateCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
 <!--            <td><a class="text-danger" th:href="@{'/admin/deleteCategory/' + ${category.idCategories}}">Tryk her</a></td>-->
