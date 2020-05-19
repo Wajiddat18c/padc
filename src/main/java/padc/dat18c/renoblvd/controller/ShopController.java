@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import padc.dat18c.renoblvd.auth.UserService;
+import padc.dat18c.renoblvd.model.CustomerInformation;
 import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.model.Productstoimages;
-import padc.dat18c.renoblvd.service.CategoriesService;
-import padc.dat18c.renoblvd.service.NewsletterService;
-import padc.dat18c.renoblvd.service.ProductsService;
-import padc.dat18c.renoblvd.service.ProductstoimagesService;
+import padc.dat18c.renoblvd.service.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +38,8 @@ public class ShopController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CustomerInformationService customerInformationService;
 
     @GetMapping(value = "/login")
     public String getLoginPage(){
@@ -87,5 +87,15 @@ public class ShopController {
         return "shop/products/showProducts";
     }
 
+    @GetMapping("/createCustomer")
+    public String createCustomer() {
+        return "shop/customer/createCustomer";
+    }
+
+    @PostMapping("/createCustomer")
+    public String createCustomer(@ModelAttribute CustomerInformation customerInformation) {
+        customerInformationService.create(customerInformation);
+        return "redirect:/";
+    }
 
 }
