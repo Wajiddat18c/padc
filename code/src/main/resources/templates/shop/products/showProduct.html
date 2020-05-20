@@ -11,10 +11,10 @@
     <div class="content">
         <div class="row">
             <div class="col-md-6">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="false" data-pause="false">
                     <div class="carousel-inner">
                         <div th:each="productImgs, stats : ${productImgs}" class="carousel-item" th:classappend="${stats.index == 0} ? active">
-                            <img class="d-block w-100" th:src="@{'/downloadFile/'+ ${productImgs.files_id}}" width="100%" height="auto">
+                            <img class="d-block w-100" th:src="@{'/downloadFile/'+ ${productImgs.files_id}}">
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,4 @@
+.carousel-control-next, .carousel-control-prev{
+    background: black;
+    margin: 0 15px;
+}
