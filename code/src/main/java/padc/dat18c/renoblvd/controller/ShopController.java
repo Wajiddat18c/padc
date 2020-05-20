@@ -2,7 +2,6 @@ package padc.dat18c.renoblvd.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,6 @@ import padc.dat18c.renoblvd.model.Newsletter;
 import padc.dat18c.renoblvd.model.Productstoimages;
 import padc.dat18c.renoblvd.service.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -66,22 +64,10 @@ public class ShopController {
     @GetMapping("/products")
     public String showProducts(Model model) {
         model.addAttribute("product", productsService.getAll());
+
         List<Productstoimages> productstoimagesList = productstoimagesService.getAll();
-        List<Productstoimages> result = new ArrayList<>();
 
-        for(Productstoimages productstoimages : productstoimagesList){
-            boolean contains = false;
-            for(Productstoimages productstoimages1 : result){
-                if(productstoimages1.getProducts_id_Products() == productstoimages.getProducts_id_Products()) {
-                    contains = true;
-                    break;
-                }
-            }
-            if(!contains)
-                result.add(productstoimages);
-        }
-
-        model.addAttribute("imgproduct", result);
+        model.addAttribute("imgproduct", productstoimagesService.firstImgForProduct());
         model.addAttribute("category", categoriesService.getAll());
 
         return "shop/products/showProducts";

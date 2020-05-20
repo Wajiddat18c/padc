@@ -34,14 +34,12 @@ public class ProductstoimagesService {
 
     public Productstoimages findById(int idProductsToImages){
         Optional<Productstoimages> find = productstoimagesRepo.findById(idProductsToImages);
-        if(find.isPresent()){
-            return find.get();
-        }
-        return null;
+        return find.orElse(null);
     }
     public List<Productstoimages>getAll(){
         return (List<Productstoimages>) productstoimagesRepo.findAll();
     }
+
     public List<Productstoimages>getByProdId(int id){
         List<Productstoimages> result = new ArrayList<>();
         List<Productstoimages> all = (List<Productstoimages>) productstoimagesRepo.findAll();
@@ -51,5 +49,22 @@ public class ProductstoimagesService {
         }
         return result;
     }
+    public List<Productstoimages> firstImgForProduct(){
 
+        List<Productstoimages> productsToImagesLinks = getAll();
+        List<Productstoimages> result = new ArrayList<>();
+
+        for(Productstoimages productstoimages : productsToImagesLinks){
+            boolean contains = false;
+            for(Productstoimages productsToImagesSaved : result){
+                if(productsToImagesSaved.getProducts_id_Products() == productstoimages.getProducts_id_Products()) {
+                    contains = true;
+                    break;
+                }
+            }
+            if(!contains)
+                result.add(productstoimages);
+        }
+        return result;
+    }
 }
