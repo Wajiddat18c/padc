@@ -10,19 +10,38 @@
 <div class="container">
     <div class="content">
         <div>
-            <h1>
-                Reno Blvd. webshop
-            </h1>
-            <p>
-                Gå til
-                <a href="/admin/"> admin</a>
-            </p>
-            <p>
-                Velkommen til Reno Blvd.'s webshop, her kan du købe de produkter der bruges hos os.
-            </p>
-            <p class="font-weight-bold">
-                Sign up here: <a href="shop/signup"> nyhedsbrev </a>
-            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 th:text="${shop.name}">
+                    </h1>
+                    <p th:text="${shop.description}">
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <p class="font-weight-bold">
+                        Her kan du kontakte os
+                    </p>
+                    <p th:text="${shop.address}">
+                    </p>
+                    <p>
+                        Åbent : <span th="${shop.opening_hours}"></span>
+                    </p>
+                    <p>
+                       E-mail : <span th="${shop.email}"></span>
+                    </p>
+                    <p>
+                        Tlf. : <span th="${shop.phone_number}"></span>
+                    </p>
+                    <p>
+                        CVR : <span th="${shop.vat}"></span>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="font-weight-bold">
+                        Sign up here: <a href="shop/signup"> nyhedsbrev </a>
+                    </p>
+                </div>
+            </div>
         </div>
         <div th:replace="fragment/fragment :: productsFragment">
         </div>

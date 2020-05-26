@@ -9,6 +9,7 @@ import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
 import padc.dat18c.renoblvd.imageshandler.FileInfoService;
 import padc.dat18c.renoblvd.service.ProductsService;
 import padc.dat18c.renoblvd.service.ProductstoimagesService;
+import padc.dat18c.renoblvd.service.StoreService;
 
 @Controller
 public class IndexController {
@@ -21,13 +22,18 @@ public class IndexController {
     ProductstoimagesService productstoimagesService;
     @Autowired
     FileInfoService fileInfoService;
+    @Autowired
+    StoreService storeService;
+
+    //Store id in DB
+    public final int storeId = 1;
 
     @GetMapping("/")
     public String frontPage(Model model){
 
         model.addAttribute("product", productsService.getAll());
         model.addAttribute("imgproduct", productstoimagesService.firstImgForProduct());
-
+        model.addAttribute("shop", storeService.findById(storeId));
         return "shop/index";
     }
 
