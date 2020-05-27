@@ -10,15 +10,15 @@ public class Basket {
 
     @Id
     private int idBasket;
-    private int basketProducts_idbasketProducts;
+    private String created;
 
     public Basket(){
 
     }
 
-    public Basket(int idBasket, int basketProducts_idbasketProducts) {
+    public Basket(int idBasket, String created) {
         this.idBasket = idBasket;
-        this.basketProducts_idbasketProducts = basketProducts_idbasketProducts;
+        this.created = created;
     }
 
     public int getIdBasket() {
@@ -29,11 +29,11 @@ public class Basket {
         this.idBasket = idBasket;
     }
 
-    public int getBasketProducts_idbasketProducts() {
-        return basketProducts_idbasketProducts;
+    public String getCreated() {
+        return created;
     }
 
-    public void setBasketProducts_idbasketProducts(int basketProducts_idbasketProducts) {
-        this.basketProducts_idbasketProducts = basketProducts_idbasketProducts;
+    public void setCreated(String basketProducts_idbasketProducts) {
+        this.created = basketProducts_idbasketProducts;
     }
 }

@@ -13,6 +13,8 @@
     <h1>opret person</h1>
 
     <form class="form-inline"  action="/shop/createCustomer" method="post">
+        <input type="hidden" name="id" th:value="${id}">
+        <input type="hidden" name="amt" th:value="${amt}">
         <input class="form-control" type="text" name="firstName" placeholder="firstName">
         <input class="form-control" type="text" name="lastName" placeholder="lastName">
         <input class="form-control" type="text" name="phoneNumber" placeholder="phoneNumber">

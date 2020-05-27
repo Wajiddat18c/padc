@@ -1,25 +1,27 @@
 package padc.dat18c.renoblvd.controller;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import padc.dat18c.renoblvd.auth.UserService;
-import padc.dat18c.renoblvd.model.CustomerInformation;
-import padc.dat18c.renoblvd.model.Newsletter;
-import padc.dat18c.renoblvd.model.Productstoimages;
+import padc.dat18c.renoblvd.model.*;
 import padc.dat18c.renoblvd.service.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
 @RequestMapping("/shop/")
 public class ShopController {
+
+    @Autowired
+    OrderService orderService;
 
     @Autowired
     NewsletterService newsletterService;
@@ -38,6 +40,14 @@ public class ShopController {
 
     @Autowired
     CustomerInformationService customerInformationService;
+
+    @Autowired
+    BasketService basketService;
+
+    @Autowired
+    BasketProductsService basketProductsService;
+
+
 
     @GetMapping(value = "/login")
     public String getLoginPage(){
@@ -73,14 +83,48 @@ public class ShopController {
         return "shop/products/showProducts";
     }
 
+
     @GetMapping("/createCustomer")
-    public String createCustomer() {
+    public String createCustomer(Model model,
+                                 @RequestParam Optional<Integer> id,
+                                 @RequestParam Optional<Integer> amt) {
+        model.addAttribute("id", id.orElse(0));
+        model.addAttribute("amt", amt.orElse(0));
         return "shop/customer/createCustomer";
     }
 
+
     @PostMapping("/createCustomer")
-    public String createCustomer(@ModelAttribute CustomerInformation customerInformation) {
-        customerInformationService.create(customerInformation);
+    public String createCustomer(@ModelAttribute CustomerInformation customerInformation,
+                                 @RequestParam Optional<Integer> id,
+                                 @RequestParam Optional<Integer> amt) {
+        if(id.isPresent() && amt.isPresent()) {
+
+            //Customer
+            customerInformationService.create(customerInformation);
+
+            //Basket
+            Basket basket = new Basket();
+            basket.setCreated(LocalDateTime.now().toString());
+            basketService.create(basket);
+
+            //Product & amount
+            BasketProducts basketProducts = new BasketProducts();
+            basketProducts.setAmount(amt.get());
+            basketProducts.setProducts_idProducts(id.get());
+            basketProductsService.create(basketProducts);
+
+
+            //Order
+            Order order = new Order();
+            order.setCustomer_idCustomer(customerInformation.getIdcustomerInformation());
+            order.setBasket_idBasket(basket.getIdBasket());
+            order.setStatus("Ordered");
+            orderService.create(order);
+
+        }
+        else
+            customerInformationService.create(customerInformation);
         return "redirect:/";
     }
 
