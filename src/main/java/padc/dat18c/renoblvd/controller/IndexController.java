@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import padc.dat18c.renoblvd.imageshandler.DatabaseFileService;
 import padc.dat18c.renoblvd.imageshandler.FileInfoService;
-import padc.dat18c.renoblvd.model.Productstoimages;
 import padc.dat18c.renoblvd.service.ProductsService;
 import padc.dat18c.renoblvd.service.ProductstoimagesService;
-
-import java.util.ArrayList;
-import java.util.List;
+import padc.dat18c.renoblvd.service.StoreService;
 
 @Controller
 public class IndexController {
@@ -25,28 +22,18 @@ public class IndexController {
     ProductstoimagesService productstoimagesService;
     @Autowired
     FileInfoService fileInfoService;
+    @Autowired
+    StoreService storeService;
+
+    //Store id in DB
+    public final int storeId = 1;
 
     @GetMapping("/")
     public String frontPage(Model model){
 
         model.addAttribute("product", productsService.getAll());
-        List<Productstoimages> productstoimagesList = productstoimagesService.getAll();
-        List<Productstoimages> result = new ArrayList<>();
-
-        for(Productstoimages productstoimages : productstoimagesList){
-            boolean contains = false;
-            for(Productstoimages productstoimages1 : result){
-                if(productstoimages1.getProducts_id_Products() == productstoimages.getProducts_id_Products()) {
-                    contains = true;
-                    break;
-                }
-            }
-            if(!contains)
-                result.add(productstoimages);
-        }
-
-        model.addAttribute("imgproduct", result);
-
+        model.addAttribute("imgproduct", productstoimagesService.firstImgForProduct());
+        model.addAttribute("shop", storeService.findById(storeId));
         return "shop/index";
     }
 

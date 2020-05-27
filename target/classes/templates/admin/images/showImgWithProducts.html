@@ -27,17 +27,10 @@
             <tbody>
             <tr> </tr>
             <p th:each="imgproduct : ${imgproduct}">
-
-
-            <td> <span th:text="${imgproduct.idProductsToImages}">data</span> </td>
-
+            <td> <span th:text="${imgproduct.idProductsToImages}">id</span> </td>
             <td><img height="50" width="50" th:src="@{'/downloadFile/' + ${imgproduct.files_id}}"> </td>
-
-            <td><span th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}" th:text="${product.name}">Kategori</span></td>
-
-
+            <td><span th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}" th:text="${product.name}">navn</span></td>
             <td><a th:href="@{'/admin/updateimg/' + ${imgproduct.idProductsToImages}}">Tryk her</a></td>
-
             <td><a class="text-danger" th:href="@{'/admin/deleteimgprod/' + ${imgproduct.idProductsToImages}}">Tryk her</a></td>
 
             </tr>

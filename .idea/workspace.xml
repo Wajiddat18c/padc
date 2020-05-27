@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0d11a05-b252-485f-943d-2af74ccc988c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/padc/dat18c/renoblvd/controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/padc/dat18c/renoblvd/controller/ShopController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragment/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragment/fragment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragment/fragment.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragment/fragment.html" afterDir="false" />
-    </list>
+    <list default="true" id="d4170b26-7510-4176-a1b5-e994804c88ec" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,20 +13,12 @@
       <executable />
     </execution>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1c8xhMI0Kbfe0KLyP8lSS7Jk80P" />
+  <component name="ProjectId" id="1c9A6Q759xTY1YHvONY8EgaWuul" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -66,12 +54,15 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0d11a05-b252-485f-943d-2af74ccc988c" name="Default Changelist" comment="" />
-      <created>1589924143493</created>
+      <changelist id="d4170b26-7510-4176-a1b5-e994804c88ec" name="Default Changelist" comment="" />
+      <created>1589930260264</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1589924143493</updated>
-      <workItem from="1589924165348" duration="779000" />
+      <updated>1589930260264</updated>
+      <workItem from="1589930263673" duration="718000" />
+      <workItem from="1590055453704" duration="1774000" />
+      <workItem from="1590447194846" duration="11000" />
+      <workItem from="1590557042309" duration="358000" />
     </task>
     <servers />
   </component>
@@ -83,7 +74,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
