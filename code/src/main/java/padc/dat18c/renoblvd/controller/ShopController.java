@@ -115,11 +115,14 @@ public class ShopController {
             basketProductsService.create(basketProducts);
 
 
+
             //Order
             Order order = new Order();
             order.setCustomer_idCustomer(customerInformation.getIdcustomerInformation());
             order.setBasket_idBasket(basket.getIdBasket());
-            order.setStatus("Ordered");
+            order.setStatus("New");
+            order.setLink("None");
+            order.setDate(LocalDateTime.now().toString());
             orderService.create(order);
 
         }

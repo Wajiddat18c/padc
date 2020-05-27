@@ -3,14 +3,19 @@ package padc.dat18c.renoblvd.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="product_orders")
 public class Order {
     @Id
     @Column(name = "id_order")
     private int idorder;
+    @Column(name = "o_status")
     private String status;
+    @Column(name = "o_date")
     private String date;
+    @Column(name = "o_link")
     private String link;
     private int basket_idBasket;
     private int customer_idCustomer;
