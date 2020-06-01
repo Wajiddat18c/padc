@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.controller
+ */
 package padc.dat18c.renoblvd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,10 @@ import padc.dat18c.renoblvd.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+/**
+ * This i an Controller class that routes web pages
+ * This class has responsibility to handle all of the admin pages
+ */
 @Controller
 @RequestMapping("/admin/")
 public class AdminController {
@@ -60,6 +66,7 @@ public class AdminController {
 
     @Autowired
     StoreService storeService;
+
 
     @GetMapping("/")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -154,6 +161,7 @@ public class AdminController {
 
         return "admin/images/uploadFiles";
     }
+
 
     @PostMapping("/uploadFile")
     public String uploadFile(@RequestParam("file") MultipartFile file) {

@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 
@@ -5,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+/**
+ * This class handles all of the Crud-operations
+ */
 
 @Service
 public class DatabaseSERVICE {

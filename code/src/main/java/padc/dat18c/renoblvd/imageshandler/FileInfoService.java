@@ -1,3 +1,6 @@
+/**
+ * This is a Repository class that handles Sql quarries.
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 
@@ -8,7 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-
+/**
+ * This class gets file information from database.
+ */
 @Service
 public class FileInfoService {
 

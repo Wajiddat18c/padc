@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.auth
+ */
 package padc.dat18c.renoblvd.auth;
 
 
@@ -6,7 +9,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
-
+/**
+ * This class implements UserDetails.
+ */
 public class UserPrincipal implements UserDetails {
 
     private User user;
@@ -18,6 +23,10 @@ public class UserPrincipal implements UserDetails {
         this.authGroups = authGroups;
     }
 
+    /**
+     * This method handles Authorises
+     * @return an set of grantedAuthorities
+     */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (null == authGroups){

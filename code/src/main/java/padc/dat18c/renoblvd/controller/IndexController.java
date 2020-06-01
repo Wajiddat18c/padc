@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.controller
+ */
 package padc.dat18c.renoblvd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,11 @@ import padc.dat18c.renoblvd.imageshandler.FileInfoService;
 import padc.dat18c.renoblvd.service.ProductsService;
 import padc.dat18c.renoblvd.service.ProductstoimagesService;
 import padc.dat18c.renoblvd.service.StoreService;
+
+/**
+ * This i an Controller class that routes web pages
+ * This class has responsibility to handle the index page
+ */
 
 @Controller
 public class IndexController {

@@ -1,9 +1,15 @@
+/**
+ * padc.dat18c.renoblvd.auth
+ */
 package padc.dat18c.renoblvd.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+/**
+ * This class defines data structure.
+ */
 
 @Entity
 @Table(name = "user")

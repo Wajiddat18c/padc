@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +17,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-
+/**
+ * This class handles the download of a file.
+ */
 @RestController
 public class FileDownloadController {
 
     @Autowired
     private DatabaseFileService fileStorageService;
 
+    /**
+     * This method downloads a single images from database.
+     * @param fileName get file name from database
+     * @param request from HttpServletRequest
+     * @return file name and file data
+     */
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity < Resource > downloadFile(@PathVariable String fileName, HttpServletRequest request) {
         // Load file as Resource

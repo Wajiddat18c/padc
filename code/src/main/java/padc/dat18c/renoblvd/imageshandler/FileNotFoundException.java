@@ -1,8 +1,13 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
+/**
+ * This class handles errors
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class FileNotFoundException extends RuntimeException {
 
