@@ -55,7 +55,7 @@
     <div th:each="imgproduct : ${imgproduct}" class="col-md-4">
         <div class="card mb-4 box-shadow">
             <a th:href="@{'/product/' + ${imgproduct.products_id_Products}}">
-                <img th:src="@{'/downloadFile/' + ${imgproduct.files_id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+                <img th:src="@{'/downloadFile/' + ${imgproduct.files_id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  data-holder-rendered="true">
             </a>
             <div class="card-body" th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}">
                 <a th:href="@{'/product/' + ${imgproduct.products_id_Products}}">

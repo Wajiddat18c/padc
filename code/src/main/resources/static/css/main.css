@@ -10,3 +10,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.card-img-top{
+    max-height: 300px;
+    width: auto;
+    display: block;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+}
