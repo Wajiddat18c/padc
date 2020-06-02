@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.config
+ */
 package padc.dat18c.renoblvd.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,9 @@ import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import padc.dat18c.renoblvd.auth.UserService;
-
+/**
+ * This class configures our security.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -23,7 +28,10 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
     @Autowired
     private UserService userService;
 
-
+    /**
+     * This method gives us the DaoAuthentication
+     * @return DaoAuthentication
+     */
     @Bean
     public DaoAuthenticationProvider studentAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -33,6 +41,10 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         return provider;
     }
 
+    /**
+     * This method tels us if user is Authorized
+     * @return authorityMapper
+     */
     @Bean
     public GrantedAuthoritiesMapper authoritiesMapper(){
         SimpleAuthorityMapper authorityMapper = new SimpleAuthorityMapper();
@@ -47,7 +59,11 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         auth.authenticationProvider(studentAuthenticationProvider());
     }
 
-
+    /**
+     * This method handles all of the http requests.
+     * @param http Can give
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

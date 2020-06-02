@@ -7,15 +7,25 @@
 <body>
 <nav th:replace="fragment/fragment :: navbar">
 </nav>
-<div class="container">
+<div class="container col-md-6">
     <h1>Tilmeld nyhedsbrev</h1>
     <p>
         Her kommer alle vores nyeste og bedste tilbud, både på produkter og klipninger.
     </p>
-    <form class="form-inline"  action="/shop/signup" method="post">
+    <form action="/shop/signup" method="post">
         <!--        <input class="form-control" type="text" name="idNews" placeholder="E-mail">-->
-        <input class="form-control" type="text" name="email" placeholder="Email">
-        <button type="submit" class="btn btn-info">Tilmeld</button>
+        <div class="form-inline">
+            <input class="form-control" type="email" name="email" required="" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="acceptTerms" class="form-check-label">
+                Læs vores <a target="_blank" th:href="@{'/terms'}">betingelser</a> og accepter dem i checkboxen for at fortsætte.
+            </label>
+            <input id="acceptTerms" class="form-check-inline" type="checkbox" required="" name="acceptTerms">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Tilmeld</button>
+        </div>
     </form>
 </div>
 

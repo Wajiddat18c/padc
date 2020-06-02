@@ -1,4 +1,10 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
+/**
+ * This class handles errors
+ */
 
 public class FileStorageException extends RuntimeException {
 

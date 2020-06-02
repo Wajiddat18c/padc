@@ -1,8 +1,16 @@
+/**
+ * padc.dat18c.renoblvd.model
+ */
+
 package padc.dat18c.renoblvd.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+/**
+ * This class defines data structure.
+ */
 
 @Entity
 @Table(name = "basket")

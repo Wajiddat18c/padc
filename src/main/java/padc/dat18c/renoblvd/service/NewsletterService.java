@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.service
+ */
 package padc.dat18c.renoblvd.service;
 
 import padc.dat18c.renoblvd.Repository.NewsletterRepo;
@@ -7,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+/**
+ * This class handles all of the Crud-operations
+ */
 
 @Service
 public class NewsletterService {

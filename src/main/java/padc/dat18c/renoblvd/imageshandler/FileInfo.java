@@ -1,9 +1,14 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-
+/**
+ * This class defines data structure.
+ */
 @Entity
 @Table(name = "files")
 public class FileInfo {

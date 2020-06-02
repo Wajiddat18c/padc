@@ -10,7 +10,7 @@
     <link rel="stylesheet" th:href="@{'/css/bootstrap.min.css'}" >
 
     <meta charset="UTF-8">
-    <title>Fragment</title>
+    <title>Reno Blvd. webshop</title>
     <!--
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -54,16 +54,20 @@
 <div class="row" th:fragment="productsFragment">
     <div th:each="imgproduct : ${imgproduct}" class="col-md-4">
         <div class="card mb-4 box-shadow">
-            <img th:src="@{'/downloadFile/' + ${imgproduct.files_id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+            <a th:href="@{'/product/' + ${imgproduct.products_id_Products}}">
+                <img th:src="@{'/downloadFile/' + ${imgproduct.files_id}}" class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  data-holder-rendered="true">
+            </a>
             <div class="card-body" th:each="product : ${product}" th:if="${imgproduct.products_id_Products == product.idProducts}">
-                <p class="card-text" th:text="${product.name}">
-                    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-                <p th:text="${product.description}">
+                <a th:href="@{'/product/' + ${imgproduct.products_id_Products}}">
+                    <h5 class="font-weight-bold card-text text-truncate" th:text="${product.name}">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                    </h5>
+                </a>
+                <p class="multiline-ellipsis" th:text="${product.description}">
 
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
-                    <a th:href="@{'/product/' + ${product.idProducts}}">
+                    <a th:href="@{'/product/' + ${imgproduct.products_id_Products}}">
                         <button type="button" class="btn btn-success">
                             Køb
                         </button>

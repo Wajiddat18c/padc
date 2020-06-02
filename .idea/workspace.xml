@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4170b26-7510-4176-a1b5-e994804c88ec" name="Default Changelist" comment="" />
+    <list default="true" id="bb5b9049-4c7e-4fca-86c5-84142549dd7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/renoblvd.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/renoblvd.kotlin_module" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,10 +15,24 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1c9A6Q759xTY1YHvONY8EgaWuul" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1cY24zXheDYvKRTadZ749UznQ8o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -54,15 +70,15 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4170b26-7510-4176-a1b5-e994804c88ec" name="Default Changelist" comment="" />
-      <created>1589930260264</created>
+      <changelist id="bb5b9049-4c7e-4fca-86c5-84142549dd7c" name="Default Changelist" comment="" />
+      <created>1590691019081</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1589930260264</updated>
-      <workItem from="1589930263673" duration="718000" />
-      <workItem from="1590055453704" duration="1774000" />
-      <workItem from="1590447194846" duration="11000" />
-      <workItem from="1590557042309" duration="358000" />
+      <updated>1590691019081</updated>
+      <workItem from="1590691024087" duration="156000" />
+      <workItem from="1590836100180" duration="6098000" />
+      <workItem from="1591022845009" duration="1685000" />
+      <workItem from="1591115193199" duration="373000" />
     </task>
     <servers />
   </component>

@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 
@@ -8,13 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-
+/**
+ * This class handles all of the Crud-operations
+ */
 @Service
 public class DatabaseFileService {
 
     @Autowired
     private DatabaseFileRepository dbFileRepository;
 
+    /**
+     * This method store images to our database.
+     * @param file uses the buildin class MultipartFile to handel all of the file information
+     * @return save file to database.
+     */
     public DatabaseFile storeFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());

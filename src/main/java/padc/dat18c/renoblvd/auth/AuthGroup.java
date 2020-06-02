@@ -1,6 +1,15 @@
+/**
+ * padc.dat18c.renoblvd.auth
+ */
+
 package padc.dat18c.renoblvd.auth;
 
 import javax.persistence.*;
+
+/**
+ * This class defines data structure.
+ */
+
 
 @Entity
 @Table(name = "auth_user_group")

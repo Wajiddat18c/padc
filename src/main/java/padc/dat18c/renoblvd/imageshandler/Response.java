@@ -1,5 +1,11 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
+/**
+ * This class defines data structure.
+ */
 
 public class Response {
     private String fileName;

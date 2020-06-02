@@ -2,3 +2,19 @@
     background: black;
     margin: 0 15px;
 }
+.multiline-ellipsis {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-img-top{
+    max-height: 300px;
+    width: auto;
+    display: block;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+}

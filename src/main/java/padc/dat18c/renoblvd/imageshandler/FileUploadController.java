@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.imageshandler
+ */
 package padc.dat18c.renoblvd.imageshandler;
 
 import java.util.Arrays;
@@ -11,13 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+/**
+ * This class handles the upload of a file.
+ */
 @RestController
 public class FileUploadController {
 
     @Autowired
     private DatabaseFileService fileStorageService;
 
+    /**
+     * This is an post method that uploads a file to database.
+     * @param file uses the buildin class MultipartFile to handel all of the file information
+     * @return file infos like name, size, type.
+     */
     @PostMapping("/uploadFile")
     public Response uploadFile(@RequestParam("file") MultipartFile file) {
         DatabaseFile fileName = fileStorageService.storeFile(file);

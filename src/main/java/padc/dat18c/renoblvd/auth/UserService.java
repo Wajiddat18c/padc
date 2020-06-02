@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.auth
+ */
 package padc.dat18c.renoblvd.auth;
 
 
@@ -8,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
+/**
+ * This class implements UserDetailsService.
+ */
 
 @Service
 public class UserService implements UserDetailsService {
@@ -21,6 +27,12 @@ public class UserService implements UserDetailsService {
         this.authGroupRepository= authGroupRepository;
     }
 
+    /**
+     * This method returns an user from Database.
+     * @param username Username from Database
+     * @return user and the authGroup from database.
+     * @throws UsernameNotFoundException user not found.
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = this.userRepository.findByUsername(username);

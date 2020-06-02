@@ -1,3 +1,6 @@
+/**
+ * padc.dat18c.renoblvd.controller
+ */
 package padc.dat18c.renoblvd.controller;
 
 
@@ -16,6 +19,10 @@ import padc.dat18c.renoblvd.service.*;
 
 import java.util.List;
 
+/**
+ * This i an Controller class that routes web pages
+ * This class has responsibility to handle the shop pages
+ */
 
 @Controller
 @RequestMapping("/shop/")
