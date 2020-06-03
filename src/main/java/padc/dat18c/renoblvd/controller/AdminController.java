@@ -214,7 +214,7 @@ public class AdminController {
     public String showStore(Model model){
         model.addAttribute("store", storeService.getAll());
 
-        return "admin/storeInfo/showStoreInfo";
+        return "admin/storeinfo/showStoreInfo";
     }
 
     @GetMapping("/customer")
